@@ -1,0 +1,7 @@
+ <select ng-model="selectedPoll" ng-options="poll.source for poll in allPolls"></select>
+
+<div id="main-chart-container">
+	<div simple-line-chart data="selectedPoll.results"></div>
+</div>
+
+
