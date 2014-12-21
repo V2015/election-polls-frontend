@@ -8,14 +8,14 @@
  * Controller of the electionPollsApp
  */
 angular.module('electionPollsApp')
-  .controller('MainCtrl', function ($scope,pollService) {
-  	// Init
-  	$scope.allPolls = [];
+  .controller('MainCtrl', function ($scope) {
+  // 	// Init
+  // 	$scope.allPolls = [];
 
-  	pollService.getPolls().then(function(polls) {
-		  $scope.allPolls = pollService.addAveragePoll(polls);
-		  $scope.selectedPoll = $scope.allPolls[0];
-		});
+  // 	pollService.getPolls().then(function(polls) {
+		//   $scope.allPolls = pollService.addAveragePoll(polls);
+		//   $scope.selectedPoll = $scope.allPolls[0];
+		// });
 
   	
-  });
+	});

@@ -32,5 +32,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-      RestangularProvider.setBaseUrl('http://localhost:3000');
-  });
+      RestangularProvider.setBaseUrl('https://v15electionpolls.herokuapp.com');
+  })
+  .run(['dataService', function(dataService){
+    dataService.getData();
+  }]);

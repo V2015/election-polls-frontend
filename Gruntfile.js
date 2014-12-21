@@ -386,16 +386,30 @@ module.exports = function (grunt) {
       }
     },
 
-    ngconstant: {
-      development: {
-
-      },
-      production: {
-        options: {
-          
-        }
-      }
-    },
+    // ngconstant: {
+    //   development: {
+    //     options: {
+    //       dest: '<% yeoman.app %>/scripts/config.js'
+    //     },
+    //     constants: {
+    //       ENV: {
+    //         name: 'development',
+    //         apiEndpoint: 'http://localhost:3000'
+    //       }
+    //     }
+    //   },
+    //   production: {
+    //     options: {
+    //       dest: '<% yeoman.dist %>/scripts/config.js'
+    //     },
+    //     constants: {
+    //       ENV: {
+    //         name: 'production',
+    //         apiEndpoint: 'http://v15electionpolls.herokuapp.com'
+    //       }
+    //     }
+    //   },
+    // },
   });
 
 
