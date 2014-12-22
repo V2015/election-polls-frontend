@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('electionPollsApp')
-.service('pollService', ['Restangular', function(Restangular){
+.service('pollService', ['Restangular','dataService', function(Restangular,dataService){
 	var polls = Restangular.all('polls.json');
 
 	this.getPolls = function() {
@@ -38,4 +38,20 @@ angular.module('electionPollsApp')
 			}
 		})
 	};
+
+	this.getResultsByParty = function(party_id) {
+		var results = [];
+		_.each(dataService.pollData,function(poll) {
+			results.push({
+				date: poll.date,
+				mandates: getPartyMandates(poll,party_id)
+			})
+		});
+		return results;
+	};
+
+	function getPartyMandates(poll,party_id) {
+		var result = _.findWhere(poll.results,{party_id: party_id})
+		return result.mandates;
+	}
 }]);

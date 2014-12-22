@@ -1,8 +1,9 @@
- <select ng-model="selectedPoll" ng-options="poll.source for poll in pollData"></select>
+<select ng-model="selectedPoll" ng-options="poll.source for poll in pollData"></select>
 
 <div id="main-chart-container">
 	<div simple-line-chart
 			 ng-if="pollData && partyData"></div>
 </div>
+
 
 

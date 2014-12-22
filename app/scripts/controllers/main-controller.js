@@ -8,9 +8,10 @@
  * Controller of the electionPollsApp
  */
 angular.module('electionPollsApp')
-  .controller('MainController', function ($scope,dataService,pollService) {
+  .controller('MainController', function ($scope,dataService,pollService,$route) {
+
   	var updatePollData = function(){
-	    $scope.pollData = pollService.addAveragePoll(dataService.pollData);
+	    $scope.pollData = pollService.addAveragePoll(angular.copy(dataService.pollData));
 	  	$scope.selectedPoll = $scope.pollData[0];
 	  };
 
