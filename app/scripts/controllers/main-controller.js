@@ -8,16 +8,10 @@
  * Controller of the electionPollsApp
  */
 angular.module('electionPollsApp')
-  .controller('MainController', function ($scope,dataService,pollService,$route) {
-
-  	var updatePollData = function(){
-	    $scope.pollData = pollService.addAveragePoll(angular.copy(dataService.pollData));
-	  	$scope.selectedPoll = $scope.pollData[0];
-	  };
-
-	  var updatePartyData = function() {
-	  	$scope.partyData = dataService.partyData;
-	  };
+  .controller('MainController', function ($scope,pollData,partyData,pollService,$route) {
+  	$scope.pollData = pollService.addAveragePoll(pollData);
+  	$scope.selectedPoll = $scope.pollData[0];
+  	$scope.partyData = partyData
 
 	  $scope.partyName = function(p_id) {
 	  	return _.findWhere($scope.partyData, {id: p_id}).name;
@@ -29,10 +23,5 @@ angular.module('electionPollsApp')
 
 	  $scope.navigateToPartyPage = function (party_id) {
       alert(party_id);
-    };
-
-  	dataService.registerObserverCallback("getPolls",updatePollData);
-  	dataService.registerObserverCallback("getParties",updatePartyData);
-
-  	
+    };  	
 	});

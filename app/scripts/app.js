@@ -22,19 +22,46 @@ angular
   .config(function ($routeProvider,RestangularProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/main.html',
+        controller: 'MainController',
+        resolve: {
+          pollData: function(Restangular){
+            return Restangular.all('polls.json').getList().then(function (data) {
+              return data;
+            }, function () {
+              return []; // failure
+            });
+          },
+          partyData: function(Restangular){
+            return Restangular.all('parties.json').getList().then(function (data) {
+              return data;
+            }, function () {
+              return []; // failure
+            });
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html'
       })
-      .when('/parties/:partyId', {
-        templateUrl: 'views/party.html'
+      .when('/parties/:id', {
+        templateUrl: 'views/party.html',
+        controller: 'PartyController',
+        resolve: {
+          partyResults: function(Restangular,$route){
+            return Restangular.service('parties').one($route.current.params.id+'.json').get().then(function (data) {
+              return data;
+            }, function () {
+              return []; // failure
+            });
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
       });
+      // For dev (if you have the election-polls-backend running)
+      //RestangularProvider.setBaseUrl('http://localhost:3000');
+      // For production
       RestangularProvider.setBaseUrl('https://v15electionpolls.herokuapp.com');
-  })
-  .run(['dataService', function(dataService){
-    dataService.getData();
-  }]);
+  });

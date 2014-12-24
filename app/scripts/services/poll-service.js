@@ -1,13 +1,7 @@
 'use strict';
 
 angular.module('electionPollsApp')
-.service('pollService', ['Restangular','dataService', function(Restangular,dataService){
-	var polls = Restangular.all('polls.json');
-
-	this.getPolls = function() {
-		return polls.getList();
-	};
-
+.service('pollService', [function(){
 	this.addAveragePoll = function(polls) {
 		var averagePoll = {
 			source: "ממוצע",
@@ -39,16 +33,16 @@ angular.module('electionPollsApp')
 		})
 	};
 
-	this.getResultsByParty = function(party_id) {
-		var results = [];
-		_.each(dataService.pollData,function(poll) {
-			results.push({
-				date: poll.date,
-				mandates: getPartyMandates(poll,party_id)
-			})
-		});
-		return results;
-	};
+	// this.getResultsByParty = function(party_id) {
+	// 	var results = [];
+	// 	_.each(dataService.pollData,function(poll) {
+	// 		results.push({
+	// 			date: poll.date,
+	// 			mandates: getPartyMandates(poll,party_id)
+	// 		})
+	// 	});
+	// 	return results;
+	// };
 
 	function getPartyMandates(poll,party_id) {
 		var result = _.findWhere(poll.results,{party_id: party_id})
