@@ -384,32 +384,7 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    },
-
-    // ngconstant: {
-    //   development: {
-    //     options: {
-    //       dest: '<% yeoman.app %>/scripts/config.js'
-    //     },
-    //     constants: {
-    //       ENV: {
-    //         name: 'development',
-    //         apiEndpoint: 'http://localhost:3000'
-    //       }
-    //     }
-    //   },
-    //   production: {
-    //     options: {
-    //       dest: '<% yeoman.dist %>/scripts/config.js'
-    //     },
-    //     constants: {
-    //       ENV: {
-    //         name: 'production',
-    //         apiEndpoint: 'http://v15electionpolls.herokuapp.com'
-    //       }
-    //     }
-    //   },
-    // },
+    }
   });
 
 
