@@ -2,6 +2,12 @@
 
 angular.module('electionPollsApp')
 .service('pollService', [function(){
+	var right = [14,15,16,19];
+	var center = [17,18];
+	var religious = [20,21];
+	var left = [22,23];
+	var arabs = [24,25,26];
+
 	this.addAveragePoll = function(polls) {
 		var averagePoll = {
 			source: "ממוצע",
@@ -33,19 +39,33 @@ angular.module('electionPollsApp')
 		})
 	};
 
-	// this.getResultsByParty = function(party_id) {
-	// 	var results = [];
-	// 	_.each(dataService.pollData,function(poll) {
-	// 		results.push({
-	// 			date: poll.date,
-	// 			mandates: getPartyMandates(poll,party_id)
-	// 		})
-	// 	});
-	// 	return results;
-	// };
+	this.getPieData = function(poll) {
+		var pieData = [
+			{ chunk: "right", mandates: 0 },
+			{ chunk: "center", mandates: 0 },
+			{ chunk: "religious", mandates: 0 },
+			{ chunk: "left", mandates: 0 },
+			{ chunk: "arabs", mandates: 0 }
+		];
 
-	function getPartyMandates(poll,party_id) {
-		var result = _.findWhere(poll.results,{party_id: party_id})
-		return result.mandates;
+		_.each(poll.results, function(r){
+			if(_.contains(right,parseInt(r.party_id))) {
+				pieData[0].mandates += r.mandates;
+			}
+			if(_.contains(center,parseInt(r.party_id))) {
+				pieData[1].mandates += r.mandates;
+			}
+			if(_.contains(religious,parseInt(r.party_id))) {
+				pieData[2].mandates += r.mandates;
+			}
+			if(_.contains(left,parseInt(r.party_id))) {
+				pieData[3].mandates += r.mandates;
+			}
+			if(_.contains(arabs,parseInt(r.party_id))) {
+				pieData[4].mandates += r.mandates;
+			}
+		});
+
+		return pieData;
 	}
 }]);
