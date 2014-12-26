@@ -24,8 +24,12 @@ body {
   height: calc(100% - 80px);
 }
 
-#party-chart-container {
+.chart-container {
   height: 100%;
+}
+
+#main-poll-view {
+  height: calc(100% - 40px);
 }
 
 

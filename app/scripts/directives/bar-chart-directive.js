@@ -6,37 +6,40 @@ angular.module('electionPollsApp')
       restrict: 'EA',
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
+          // Resposive chart: update size on widow resize
+          d3.select(window).on('resize', resize);
           var margin = {top: 20, right: 20, bottom: 70, left: 40},
-          width = 600 - margin.left - margin.right,
-          height = 300 - margin.top - margin.bottom;
-          
+              width = parseInt(d3.select("#main-chart-container").style("width")) - margin.top*2,
+              height = parseInt(d3.select("#main-chart-container").style("height")) - margin.top*2;
+          var resultCache,svg,x,y,xAxis,yAxis; 
           scope.$watch('selectedPoll.results', function (pollResults, oldVal) {
             if(pollResults) {
+              resultCache = pollResults;
               // Remove existing chart
               $('#main-chart-container').html('');
 
-              var svg = d3.select("#main-chart-container").append("svg")
+              svg = d3.select("#main-chart-container").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              var x = d3.scale.ordinal()
+              x = d3.scale.ordinal()
                         .domain(_.map(pollResults, function(p) {
                           return scope.partyName(p.party_id); 
                         }))
                         .rangeRoundBands([0, width], 0.55);
 
-              var y = d3.scale.linear()
+              y = d3.scale.linear()
                         .domain([
                           _.min(_.pluck(pollResults, "mandates")),
                           _.max(_.pluck(pollResults, "mandates"))
                         ])
                         .range([height, 0]);
 
-              var xAxis = d3.svg.axis().scale(x).orient("bottom");
+              xAxis = d3.svg.axis().scale(x).orient("bottom");
 
-              var yAxis = d3.svg.axis().scale(y).orient("left");
+              yAxis = d3.svg.axis().scale(y).orient("left");
               
               svg.append("g")
                 .attr("class", "x axis")
@@ -65,17 +68,45 @@ angular.module('electionPollsApp')
                 .enter().append("rect")
                 .style("fill", "steelblue")
                 .attr("x", function(d) { return x(scope.partyName(d.party_id)); })
-                .attr("width", "20px")
+                .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d.mandates); })
                 .attr("height", function(d) { return height - y(d.mandates); })
                 .on("click",function(d) { navigateToParyPage(d.party_id) });
               } 
+
+              resize();
           });
 
           function navigateToParyPage(party_id) {
             $rootScope.$apply(function() {
               $location.path("/parties/"+party_id);
             });
+          }
+
+          function resize() {
+            /* Update graph using new width and height (code below) */
+            width = parseInt(d3.select("#main-chart-container").style("width")) - margin.top*2;
+            height = parseInt(d3.select("#main-chart-container").style("height")) - margin.top*2;
+             
+            /* Update the range of the scale with new width/height */
+            x.rangeRoundBands([0, width], 0.55);
+            y.range([height, 0]);
+             
+            /* Update the axis with the new scale */
+            svg.select('.x.axis')
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+             
+            svg.select('.y.axis')
+              .call(yAxis);
+             
+            /* Force D3 to recalculate and update the line */
+            svg.selectAll('rect')
+              .data(resultCache)
+              .attr("x", function(d) { return x(scope.partyName(d.party_id)); })
+              .attr("width", x.rangeBand())
+              .attr("y", function(d) { return y(d.mandates); })
+              .attr("height", function(d) { return height - y(d.mandates); })
           }
         }); // End of d3Service.d3()
         // Text Wrapping for labels

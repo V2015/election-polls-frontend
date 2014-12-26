@@ -5,13 +5,13 @@
 	<input type="radio" ng-model="pollView" value="pie">by Chunks 
 </div>
 
-<div ng-switch on="pollView">
-	<div id="main-chart-container" ng-switch-when="bar">
+<div ng-switch on="pollView" id="main-poll-view">
+	<div id="main-chart-container" class="chart-container" ng-switch-when="bar">
 		<div simple-line-chart>
 		</div>
 	</div>
 
-	<div id="pie-chart-container" ng-switch-when="pie">
+	<div id="pie-chart-container" class="chart-container" ng-switch-when="pie">
 		<div pie-chart>
 		</div>
 	</div>
