@@ -44,6 +44,9 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact.html'
+      })
       .when('/parties/:id', {
         templateUrl: 'views/party.html',
         controller: 'PartyController',
