@@ -6,9 +6,15 @@ angular.module('electionPollsApp')
       restrict: 'EA',
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
-          var margin = {top: 20, right: 20, bottom: 70, left: 40},
-              width = 600 - margin.left - margin.right,
-              height = 300 - margin.top - margin.bottom;
+          // Resposive chart: update size on widow resize
+          d3.select(window).on('resize', resize); 
+          var margin = {top: 20, right: 20, bottom: 70, left: 40};
+          var width = parseInt(d3.select("#party-chart-container").style("width")) - margin.top*2;
+          var height = parseInt(d3.select("#party-chart-container").style("height")) - margin.top*2;
+              // width = 600 - margin.left - margin.right,
+              // height = 300 - margin.top - margin.bottom;
+
+          var svg,xAxis,yAxis,bars,resultCache;
 
           // Parse the date / time
           var parseDate = d3.time.format("%Y-%m-%d").parse;
@@ -23,24 +29,26 @@ angular.module('electionPollsApp')
                 return Date.parse(r.poll.date);
               });
 
-              var xAxis = d3.svg.axis()
-              .scale(x)
-              .orient("bottom");
+              resultCache = results;
 
-              var yAxis = d3.svg.axis()
-                  .scale(y)
-                  .orient("left")
-                  .ticks(10);
+              xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+
+              yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .ticks(10);
           
               
               // Remove existing chart
               $('#party-chart-container').html('');
 
-              var svg = d3.select("#party-chart-container").append("svg")
-                  .attr("width", width + margin.left + margin.right)
-                  .attr("height", height + margin.top + margin.bottom)
-                  .append("g")
-                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+              svg = d3.select("#party-chart-container").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
               results.forEach(function(d) {
                 d.id = d.id;//parseDate(d.poll.date);
@@ -73,7 +81,7 @@ angular.module('electionPollsApp')
                   .style("text-anchor", "end")
                   .text("Mandates");
               
-              svg.selectAll("bar")
+              bars = svg.selectAll("bar")
                   .data(results)
                 .enter().append("rect")
                   .style("fill", "steelblue")
@@ -81,8 +89,37 @@ angular.module('electionPollsApp')
                   .attr("width", x.rangeBand())
                   .attr("y", function(d) { return y(d.value); })
                   .attr("height", function(d) { return height - y(d.value); });
+
+              resize();
             }
           });
+
+          function resize() {
+            /* Update graph using new width and height (code below) */
+            var width = parseInt(d3.select("#party-chart-container").style("width")) - margin.top*2,
+            height = parseInt(d3.select("#party-chart-container").style("height")) - margin.top*2;
+             
+            /* Update the range of the scale with new width/height */
+            x.rangeRoundBands([0, width], .05);
+            y.range([height, 0]);
+             
+            /* Update the axis with the new scale */
+            svg.select('.x.axis')
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+             
+            svg.select('.y.axis')
+              .call(yAxis);
+             
+            /* Force D3 to recalculate and update the line */
+            svg.selectAll('rect')
+              .data(resultCache)
+              .attr("x", function(d) { return x(d.id); })
+              .attr("width", x.rangeBand())
+              .attr("y", function(d) { return y(d.value); })
+              .attr("height", function(d) { return height - y(d.value); });
+          }
+
 
           // function wrap(text, width) {
           //   text.each(function() {
