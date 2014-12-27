@@ -6,8 +6,10 @@ angular.module('electionPollsApp')
       restrict: 'EA',
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
-          var width = 960,
-              height = 500,
+          var margin = {top: 20, right: 20, bottom: 20, left: 20};
+
+          var width = parseInt(d3.select("#pie-chart-container").style("width")),
+              height = parseInt(d3.select("#pie-chart-container").style("height")) - margin.top*2,
               radius = Math.min(width, height) / 2;
           var color = d3.scale.ordinal()
                         .range(["#98abc5", "#8a89a6", "#7b6888","#6b486b", "#a05d56"]);

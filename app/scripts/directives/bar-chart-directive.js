@@ -9,7 +9,7 @@ angular.module('electionPollsApp')
           // Resposive chart: update size on widow resize
           d3.select(window).on('resize', resize);
           var margin = {top: 20, right: 20, bottom: 70, left: 40},
-              width = parseInt(d3.select("#main-chart-container").style("width")) - margin.top*2,
+              width = parseInt(d3.select("#main-chart-container").style("width")),
               height = parseInt(d3.select("#main-chart-container").style("height")) - margin.top*2;
           var resultCache,svg,x,y,xAxis,yAxis; 
           scope.$watch('selectedPoll.results', function (pollResults, oldVal) {
@@ -19,7 +19,7 @@ angular.module('electionPollsApp')
               $('#main-chart-container').html('');
 
               svg = d3.select("#main-chart-container").append("svg")
-                .attr("width", width + margin.left + margin.right)
+                .attr("width", width)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
