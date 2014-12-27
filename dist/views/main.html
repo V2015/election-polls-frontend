@@ -1,1 +1,9 @@
-<select ng-model="selectedPoll" ng-options="poll.source for poll in pollData"></select> <div> <input type="radio" ng-model="pollView" value="bar">by Parties <input type="radio" ng-model="pollView" value="pie">by Chunks </div> <div ng-switch on="pollView" id="main-poll-view"> <div id="main-chart-container" class="chart-container" ng-switch-when="bar"> <div simple-line-chart> </div> </div> <div id="pie-chart-container" class="chart-container" ng-switch-when="pie"> <div pie-chart> </div> </div> </div>
+<select ng-model="selectedPoll" ng-options="poll.source for poll in pollData"></select> <div> <input type="radio" ng-model="pollView" value="bar">by Parties <input type="radio" ng-model="pollView" value="pie">by Chunks </div> <div ng-switch on="pollView" id="main-poll-view"> <div id="main-chart-container" class="chart-container" ng-switch-when="bar"> <div poll-bar-chart></div> </div> <div id="pie-chart-container" class="chart-container" ng-switch-when="pie"> <div pie-chart> </div> </div> <!-- 	<div id="main-chart-container" class="chart-container" ng-switch-when="bar">
+		<div simple-line-chart>
+		</div>
+	</div>
+
+	<div id="pie-chart-container" class="chart-container" ng-switch-when="pie">
+		<div pie-chart>
+		</div>
+	</div> --> </div>
