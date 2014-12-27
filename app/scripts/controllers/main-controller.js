@@ -19,8 +19,6 @@ angular.module('electionPollsApp')
   		$scope.pieData = pollService.getPieData(poll);
   	});
 
-
-
 	  $scope.partyName = function(p_id) {
 	  	return _.findWhere($scope.partyData, {id: p_id}).name;
 	  }; 
