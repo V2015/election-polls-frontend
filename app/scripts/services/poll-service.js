@@ -10,10 +10,10 @@ angular.module('electionPollsApp')
 
 	this.addAveragePoll = function(polls) {
 		var averagePoll = {
-			source: "ממוצע",
-			results: this.averageResults(polls)
+			source: "ממוצע 7 סקרים אחרונים",
+			results: this.averageResults(polls.slice(0,7))
 		}
-		polls.push(averagePoll);
+		polls.unshift(averagePoll);
 		return polls;
 	};
 
@@ -31,12 +31,14 @@ angular.module('electionPollsApp')
 			});
 		});
 		var len = polls.length;
-		return _.map(averageHash,function(party) {
+		return _.sortBy(_.map(averageHash,function(party) {
 			return { 
 				party_id: party.party_id,
-				mandates: party.mandates / len
+				mandates: parseInt(party.mandates / len)
 			}
-		})
+		}),function(r) {
+			return r.mandates;
+		}).reverse();
 	};
 
 	this.getPieData = function(poll) {

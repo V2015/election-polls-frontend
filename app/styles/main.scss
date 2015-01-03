@@ -1,7 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+
 
 .browsehappy {
   margin: 0.2em 0;
@@ -10,107 +8,131 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
-html,body,.container {
-  height: 100%;
-}
+/*
+  Layout
+*/
+  html { font-size: 62.5%; }
 
-/* Space out content a bit */
-body {
-  padding-bottom: 20px;
-}
-
-#main-view {
-  height: calc(100% - 80px);
-}
-
-.chart-container {
-  height: 100%;
-  max-width: 100%;
-}
-
-#main-poll-view {
-  height: calc(100% - 40px);
-}
-
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+  html,body,.container {
+    height: 100%;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  body {
+    padding-bottom: 20px;
+    direction: rtl;
   }
-  /* Space out the masthead */
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+
+  #main-view {
+    height: calc(100% - 80px);
   }
-}
 
-.axis {
-  font: 10px sans-serif;
-}
+  .chart-container {
+    height: 100%;
+    max-width: 100%;
+  }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+  #main-poll-view {
+    height: calc(100% - 40px);
+  }
+
+/* 
+  Header
+*/
+  .navbar {
+    margin-bottom: initial;
+  }
+
+  .navbar-default {
+    background-color: #e4f1fe;
+    border-color: #e4f1fe;
+    * {
+      color: #0071ff !important;  
+    }
+
+    .navbar-toggle {
+      border-color: transparent;
+      .icon-bar {
+        background-color: #0071ff; 
+      }
+    }
+  }
+
+/*
+  Poll select
+*/
+  #poll-select-container {
+    height: 68px;
+    line-height: 68px;
+    font-size: 24px;
+  }
+
+  #poll-select,#switch-poll {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+  }
+
+  #poll-select {
+    border-bottom: 2px solid #599ed1;
+    box-sizing: border-box;
+  }
+
+  #switch-poll {
+    background-color: #1f3a93;
+    color: #fff;
+    .glyphicon {
+      vertical-align: middle;
+    }
+  }
+
+  #poll-list {
+    list-style: none;
+    display: block;
+    -webkit-padding-start: 15px;
+    max-height: 200px;
+    background-color: #fff;
+    position: absolute;
+    line-height: 30px;
+    overflow: scroll;
+    right: 0;
+    left: 0;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    z-index: 999;
+    &.collapsed {
+      display: none;
+    }
+
+    li {
+      &:hover {
+        background-color: #e4f1fe;
+        color: #1f3a93;
+      }
+    }
+  }
+
+/*
+  Poll chart
+*/
+  .c3-ygrid {
+    stroke-dasharray: initial;
+  }
+
+  .c3-text {
+    fill: #fff !important;
+    font-size: 1.8rem;
+  }
+
+
+
+
+// .axis {
+//   font: 10px sans-serif;
+// }
+
+// .axis path,
+// .axis line {
+//   fill: none;
+//   stroke: #000;
+//   shape-rendering: crispEdges;
+// }
