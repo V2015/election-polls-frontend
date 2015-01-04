@@ -13,7 +13,9 @@
     "angular-sanitize": "^1.3.0",
     "angular-touch": "^1.3.0",
     "restangular": "latest",
-    "c3": "latest"
+    "c3": "latest",
+    "bootstrap": "latest",
+    "bootstrap-rtl": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.0",

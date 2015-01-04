@@ -19,9 +19,17 @@ angular.module('electionPollsApp')
   		$scope.pieData = pollService.getPieData(poll);
   	});
 
+    $scope.selectPoll = function(poll) {
+      $scope.selectedPoll = poll;
+    }
+
 	  $scope.partyName = function(p_id) {
 	  	return _.findWhere($scope.partyData, {id: p_id}).name;
 	  }; 
+
+    $scope.partyColor = function(p_id) {
+      return _.findWhere($scope.partyData, {id: p_id}).color;
+    }
 
 	  $scope.partyImage = function(p_id) {
 	  	return _.findWhere($scope.partyData, {id: p_id}).image;
