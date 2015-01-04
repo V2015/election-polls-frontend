@@ -1,9 +1,4 @@
-<select ng-model="selectedPoll" ng-options="poll.source for poll in pollData"></select> <div> <input type="radio" ng-model="pollView" value="bar">by Parties <input type="radio" ng-model="pollView" value="pie">by Chunks </div> <div ng-switch on="pollView" id="main-poll-view"> <div id="main-chart-container" class="chart-container" ng-switch-when="bar"> <div poll-bar-chart></div> </div> <div id="pie-chart-container" class="chart-container" ng-switch-when="pie"> <div pie-chart> </div> </div> <!-- 	<div id="main-chart-container" class="chart-container" ng-switch-when="bar">
-		<div simple-line-chart>
-		</div>
-	</div>
-
-	<div id="pie-chart-container" class="chart-container" ng-switch-when="pie">
-		<div pie-chart>
-		</div>
-	</div> --> </div>
+<div id="poll-select-container" class="row" poll-select> <div class="col-md-8 col-sm-8 col-xs-8" id="poll-select"> <span id="selected-poll">{{selectedPoll.source}}</span> <ul id="poll-list" class="collapsed"> <li ng-repeat="poll in pollData" ng-click="selectPoll(poll)"> {{poll.source}} </li> </ul> </div> <div class="col-md-4 col-sm-4 col-xs-4" id="switch-poll"> <div class="row"> <div class="col-md-8 col-sm-8 col-xs-8"> <span>החלפת סקר</span> </div> <div class="col-md-4 col-sm-4 col-xs-4"> <span class="glyphicon glyphicon-refresh"></span> </div> </div> </div> </div> <!-- <div>
+	<input type="radio" ng-model="pollView" value="bar">by Parties
+	<input type="radio" ng-model="pollView" value="pie">by Chunks 
+</div> --> <div ng-switch on="pollView" id="main-poll-view"> <div id="main-chart-container" class="chart-container" ng-switch-when="bar"> <div poll-bar-chart></div> </div> <div id="pie-chart-container" class="chart-container" ng-switch-when="pie"> <div pie-chart></div> </div> </div>
