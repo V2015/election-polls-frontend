@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('electionPollsApp')
-  .directive('pollBarChart', ['$rootScope','$location','d3Service', function($rootScope,$location,d3Service) {
+  .directive('mobilePollBarChart', ['$rootScope','$location','d3Service', function($rootScope,$location,d3Service) {
     return {
       restrict: 'EA',
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
           scope.$watch('selectedPoll', function (poll) {
             var chart = c3.generate({
-                bindto: '#main-chart-container',
+                bindto: '#main-chart-container-mobile',
                 data: {
                   columns: [
                     [poll.source].concat(_.map(poll.results,"mandates"))
@@ -27,10 +27,11 @@ angular.module('electionPollsApp')
                 },
                 bar: {
                   width: {
-                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                    ratio: 0.8 // this makes bar width 50% of length between ticks
                   }
                 },
                 axis: {
+                  rotated: true,
                   x: {
                     type: 'category',
                     categories: _.map(poll.results,function(r){
@@ -56,12 +57,12 @@ angular.module('electionPollsApp')
                   right: 20,
                   top: 30
                 },
-                onresized: repositionLabels
+                // onresized: repositionLabels
             });
             
-            setTimeout(function() {
-              repositionLabels();
-            },400);
+            // setTimeout(function() {
+            //   repositionLabels();
+            // },400);
           }); 
         });
 
@@ -71,11 +72,11 @@ angular.module('electionPollsApp')
           });
         }
 
-        var repositionLabels = function() {
-          setTimeout(function(){
-            d3.selectAll('#main-chart-container .c3-text').attr('y',250);
-          },0) 
-        }
+        // var repositionLabels = function() {
+        //   setTimeout(function(){
+        //     d3.selectAll('.c3-text').attr('y',250);
+        //   },0) 
+        // }
       }
     };
   }]);

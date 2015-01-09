@@ -13,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 */
   html { font-size: 62.5%; }
 
-  html,body,.container {
+  html,body {
     height: 100%;
   }
 
@@ -130,6 +130,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   #party-name-header {
     text-align: center;
   }
+
+
+@media only screen and (max-width : 768px){
+
+  .container-fluid {
+    height: 100%;
+  } 
+
+  #main-chart-container-mobile {
+    height: 100%;
+    max-height: initial !important;
+  }
+}
 
 
 
