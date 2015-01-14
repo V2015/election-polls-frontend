@@ -28,7 +28,11 @@ angular.module('electionPollsApp')
                 x: {
                   type: 'category',
                   categories: _.map(data,function(r){
-                    return r.poll.date;// + "("+r.poll.source+")";
+                    // helper
+                    function pad(num,size){var s = num+"";while(s.length<size)s="0"+s;return s;}
+                    var dt = new Date(r.poll.date),
+                        d = dt.getDate(), m = dt.getMonth() + 1;
+                    return pad(d,2)+" - "+m;
                   })
                 },
                 y: {
@@ -43,10 +47,14 @@ angular.module('electionPollsApp')
               legend: {
                 show: false
               },
+              tooltip: {
+                show: false
+              },
               padding: {
-                left: 20,
-                right: 20,
-                top: 30
+                left: 10,
+                right: 10,
+                top: 30,
+                bottom: 50
               },
               onresized: repositionLabels
           });

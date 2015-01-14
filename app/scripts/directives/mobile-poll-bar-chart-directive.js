@@ -7,6 +7,7 @@ angular.module('electionPollsApp')
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
           scope.$watch('selectedPoll', function (poll) {
+
             var chart = c3.generate({
                 bindto: '#main-chart-container-mobile',
                 data: {
@@ -30,6 +31,9 @@ angular.module('electionPollsApp')
                     ratio: 0.8 // this makes bar width 50% of length between ticks
                   }
                 },
+                tooltip: {
+                  show: false
+                },
                 axis: {
                   rotated: true,
                   x: {
@@ -48,29 +52,20 @@ angular.module('electionPollsApp')
                     // max: 30
                   }
                 },
-                grid: {
-                  y: {
-                    show: true
-                  }
-                },
+                // grid: {
+                //   y: {
+                //     show: true
+                //   }
+                // },
                 legend: {
                   show: false
                 },
                 padding: {
-                  left: 20,
-                  right: 20,
+                  left: 100, // enlarged for better display of categories
+                  right: 30,
                   top: 30
-                },
-                onresized: function() {
-                  setTimeout(function(){
-                    handleResize(poll);
-                  },500);
                 }
             });
-            
-            // setTimeout(function() {
-            //   repositionLabels();
-            // },400);
           }); 
         });
 
@@ -78,24 +73,6 @@ angular.module('electionPollsApp')
           $rootScope.$apply(function() {
             $location.path("/parties/"+party_id);
           });
-        }
-
-        var handleResize = function(poll) {
-          
-          $rootScope.$apply(function(){
-              d3.selectAll('.c3-axis-x line,.domain').remove();
-            var chart = $('#main-chart-container-mobile .c3-chart:first')
-            chart.find('.c3-party-names').remove();
-            chart.append($("<g class='c3-party-names'></g>"));
-            var partyNames = $('.c3-party-names');
-            _.each(poll.results,function(r,i) {
-              var c3TextClone = $('#main-chart-container-mobile .c3-text-'+i).clone();
-              c3TextClone.html("testing");
-              partyNames.append(c3TextClone);
-            });  
-          });
-
-           
         }
       }
     };
