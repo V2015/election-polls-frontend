@@ -40,11 +40,7 @@ angular.module('electionPollsApp')
                     type: 'category',
                     categories: _.map(poll.results,function(r){
                       return scope.partyName(r.party_id);
-                    }),
-                    tick: {
-                      fit: true,
-                      multiline: true
-                    }
+                    })
                   },
                   y: {
                     show: false,
