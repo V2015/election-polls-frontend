@@ -58,6 +58,33 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
 /*
+  Footer
+*/
+  footer {
+    .pie {
+      background-color: #43d4ba;
+      color: #010b60;
+    }
+
+    .bar {
+      background-color: #1f3a93;
+      color: #fff;
+    }
+  }
+
+  .footer-btn {
+    height: 320px;
+    display: table;
+    font-size: 4rem;
+  }
+
+  .footer-btn-inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+/*
   Poll select
 */
   #poll-select-container {
@@ -123,7 +150,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     font-size: 1.8rem;
   }
 
-
 /*
   Party chart
 */
@@ -145,14 +171,3 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 
-
-// .axis {
-//   font: 10px sans-serif;
-// }
-
-// .axis path,
-// .axis line {
-//   fill: none;
-//   stroke: #000;
-//   shape-rendering: crispEdges;
-// }

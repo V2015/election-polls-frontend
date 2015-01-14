@@ -36,7 +36,11 @@ angular.module('electionPollsApp')
                     type: 'category',
                     categories: _.map(poll.results,function(r){
                       return scope.partyName(r.party_id);
-                    })
+                    }),
+                    tick: {
+                      fit: true,
+                      multiline: true
+                    }
                   },
                   y: {
                     show: false,
@@ -57,7 +61,11 @@ angular.module('electionPollsApp')
                   right: 20,
                   top: 30
                 },
-                // onresized: repositionLabels
+                onresized: function() {
+                  setTimeout(function(){
+                    handleResize(poll);
+                  },500);
+                }
             });
             
             // setTimeout(function() {
@@ -72,11 +80,23 @@ angular.module('electionPollsApp')
           });
         }
 
-        // var repositionLabels = function() {
-        //   setTimeout(function(){
-        //     d3.selectAll('.c3-text').attr('y',250);
-        //   },0) 
-        // }
+        var handleResize = function(poll) {
+          
+          $rootScope.$apply(function(){
+              d3.selectAll('.c3-axis-x line,.domain').remove();
+            var chart = $('#main-chart-container-mobile .c3-chart:first')
+            chart.find('.c3-party-names').remove();
+            chart.append($("<g class='c3-party-names'></g>"));
+            var partyNames = $('.c3-party-names');
+            _.each(poll.results,function(r,i) {
+              var c3TextClone = $('#main-chart-container-mobile .c3-text-'+i).clone();
+              c3TextClone.html("testing");
+              partyNames.append(c3TextClone);
+            });  
+          });
+
+           
+        }
       }
     };
   }]);

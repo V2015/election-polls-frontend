@@ -50,6 +50,25 @@
       <div ng-view="" id="main-view"></div>
     </div>
 
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 bar footer-btn" 
+                     ng-click="pollView='bar'">
+                    <div class="footer-btn-inner">
+                        סקר אחרון
+                    </div>
+                </div>
+                <div class="col-xs-6 pie footer-btn"
+                     ng-click="pollView='bar'">
+                    <div class="footer-btn-inner">
+                        גושים
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
