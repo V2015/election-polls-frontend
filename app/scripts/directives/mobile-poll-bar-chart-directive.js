@@ -60,13 +60,8 @@ angular.module('electionPollsApp')
                   left: 100, // enlarged for better display of categories
                   right: 30,
                   top: 30
-                },
-                // onresized: repositionLabels
+                }
             });
-            
-            // setTimeout(function() {
-            //   repositionLabels();
-            // },400);
           }); 
         });
 
@@ -75,12 +70,6 @@ angular.module('electionPollsApp')
             $location.path("/parties/"+party_id);
           });
         }
-
-        // var repositionLabels = function() {
-        //   setTimeout(function(){
-        //     d3.selectAll('.c3-text').attr('y',250);
-        //   },0) 
-        // }
       }
     };
   }]);

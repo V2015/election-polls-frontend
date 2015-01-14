@@ -60,6 +60,33 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
 /*
+  Footer
+*/
+  footer {
+    .pie {
+      background-color: #43d4ba;
+      color: #010b60;
+    }
+
+    .bar {
+      background-color: #1f3a93;
+      color: #fff;
+    }
+  }
+
+  .footer-btn {
+    height: 320px;
+    display: table;
+    font-size: 4rem;
+  }
+
+  .footer-btn-inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+/*
   Poll select
 */
   #poll-select-container {
@@ -141,6 +168,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     }
   }
 
+
   .c3-axis-x text {
     font-size: 14px;
   }
@@ -148,7 +176,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   #party-chart-container .c3-axis-x text {
     font-size: 10px;
   }
-
 
 /*
   Party chart
@@ -167,29 +194,15 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     }
   }
   
+  @media only screen and (max-width : 768px){
 
+    .container-fluid {
+      height: 100%;
+    } 
 
-@media only screen and (max-width : 768px){
-
-  .container-fluid {
-    height: 100%;
-  } 
-
-  #main-chart-container-mobile {
-    height: 100%;
-    max-height: initial !important;
+    #main-chart-container-mobile {
+      height: 100%;
+      max-height: initial !important;
+    }
   }
-}
 
-
-
-// .axis {
-//   font: 10px sans-serif;
-// }
-
-// .axis path,
-// .axis line {
-//   fill: none;
-//   stroke: #000;
-//   shape-rendering: crispEdges;
-// }
