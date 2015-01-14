@@ -1,6 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 
+
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -66,6 +68,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     font-size: 24px;
   }
 
+  // smaller screens
+  @media only screen and (max-width : 360px){
+    #poll-select-container {
+      height: 68px;
+      line-height: 68px;
+      font-size: 20px;
+    }
+  }
+
+
   #poll-select,#switch-poll {
     display: table-cell;
     vertical-align: middle;
@@ -119,8 +131,22 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
   .c3-text {
-    fill: #fff !important;
+    // fill: #fff !important;
     font-size: 1.8rem;
+  }
+
+  @media only screen and (min-width : 768px){
+    .c3-text {
+      fill: #fff !important;
+    }
+  }
+
+  .c3-axis-x text {
+    font-size: 14px;
+  }
+
+  #party-chart-container .c3-axis-x text {
+    font-size: 10px;
   }
 
 
@@ -130,6 +156,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   #party-name-header {
     text-align: center;
   }
+
+  #party-chart-container .c3-text {
+    fill: #fff !important;
+  }
+
+  @media only screen and (max-width : 450px){
+    #party-chart-container .c3-text {
+      font-size: 12px;
+    }
+  }
+  
 
 
 @media only screen and (max-width : 768px){
