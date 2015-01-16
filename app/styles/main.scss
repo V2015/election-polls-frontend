@@ -42,19 +42,27 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 */
   .navbar {
     margin-bottom: initial;
+    border-radius: initial;
   }
 
   .navbar-default {
-    background-color: #e4f1fe;
-    border-color: #e4f1fe;
+    background-color: #0073ff;
+    border-color: #0073ff;
     * {
-      color: #0071ff !important;  
+      color: #fff !important;  
     }
 
     .navbar-toggle {
       border-color: transparent;
       .icon-bar {
         background-color: #0071ff; 
+      }
+    }
+
+    .navbar-brand {
+      padding: 5px 5px;
+      svg {
+        height: 100%;
       }
     }
   }
@@ -144,7 +152,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     li {
       &:hover {
-        background-color: #e4f1fe;
+        background-color: #0073ff;
         color: #1f3a93;
       }
     }
