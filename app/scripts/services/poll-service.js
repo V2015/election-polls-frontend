@@ -43,11 +43,11 @@ angular.module('electionPollsApp')
 
 	this.getPieData = function(poll) {
 		var pieData = [
-			{ chunk: "right", mandates: 0 },
-			{ chunk: "center", mandates: 0 },
-			{ chunk: "religious", mandates: 0 },
-			{ chunk: "left", mandates: 0 },
-			{ chunk: "arabs", mandates: 0 }
+			{ chunk: "ימין", mandates: 0 },
+			{ chunk: "מרכז", mandates: 0 },
+			{ chunk: "חרדים", mandates: 0 },
+			{ chunk: "שמאל", mandates: 0 },
+			{ chunk: "ערבים", mandates: 0 }
 		];
 
 		_.each(poll.results, function(r){

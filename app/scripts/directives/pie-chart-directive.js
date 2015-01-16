@@ -12,7 +12,20 @@ angular.module('electionPollsApp')
               columns: _.map(data,function(slice){
                 return [slice.chunk,slice.mandates]
               }),
-              type : 'pie'
+              type : 'donut',
+            },
+            donut: {
+              label: {
+                format: function(value, ratio, id) {
+                  return value;
+                }
+              }
+            },
+            tooltip: {
+              show: false
+            },
+            legend: {
+              position: 'right'
             }
           });
         });
