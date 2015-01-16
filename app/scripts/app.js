@@ -10,12 +10,9 @@
  */
 angular
   .module('electionPollsApp', [
-    'ngAnimate',
-    'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch',
+    // 'ngTouch',
     'restangular',
     'd3'
   ])

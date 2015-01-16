@@ -46,5 +46,13 @@ angular.module('electionPollsApp')
       } else {
         $scope.pollView = 'bar';
       }
-    } 	
+    };
+
+    $scope.shareOnFacebook = function() {
+      FB.ui({
+        method: 'share',
+        href: window.location.href,
+      },function(response) {});
+    }
+
 	});
