@@ -55,7 +55,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     .navbar-toggle {
       border-color: transparent;
       .icon-bar {
-        background-color: #0071ff; 
+        background-color: #fff; 
       }
     }
 
@@ -98,50 +98,93 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   Poll select
 */
   #poll-select-container {
-    height: 68px;
-    line-height: 68px;
-    font-size: 24px;
+    height: 55px;
+    font-size: 2rem;
+  }
 
-    & #poll-select {
-      & span {
-        white-space: nowrap;
-      }
-    }
+  #poll-select {
+    display: table;
+    height: 100%;
+  }
+
+  #poll-select-inner {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .ucontainer {
+    display: table;
+    height: 100%;
+  }
+
+  .ucontainer-inner {
+    display: table-cell;
+    vertical-align: middle;
   }
 
   // smaller screens
   @media only screen and (max-width : 360px){
-    #poll-select-container {
-      height: 68px;
-      line-height: 68px;
-      font-size: 20px;
-    }
-  }
-
-
-  #poll-select,#switch-poll {
-    display: table-cell;
-    vertical-align: middle;
-    height: 100%;
   }
 
   #poll-select {
-    border-bottom: 2px solid #599ed1;
+    //border-bottom: 2px solid #599ed1;
     box-sizing: border-box;
   }
 
-  #switch-poll {
-    background-color: #1f3a93;
+  #buttons-container {
     color: #fff;
-    .glyphicon {
-      vertical-align: middle;
+
+    .row {
+      height: 100%;
+    }
+
+    .ucontainer-inner {
+      text-align: center;
+    }
+
+    .ucontainer {
+      padding: initial;
     }
   }
+
+  #poll-view-toggle {
+     svg {
+      height: 20%;
+    }
+    .icon-label {
+      font-size: 1.4rem;
+      line-height: 0.8rem;
+    }
+    &.pie {
+      background-color: #43d4ba;
+    }
+
+    &.bar {
+      background-color: #c4f7ff;
+      color: #010b60;
+      svg {
+        * {
+          fill: #010b60;
+        }
+      }
+    }
+  }
+
+  #facebook-icon-container {
+    background-color: #010b60;
+  }
+
+  #facebook-icon {
+    * {
+      fill: #fff;
+    }
+  }
+
 
   #poll-list {
     list-style: none;
     display: block;
-    -webkit-padding-start: 15px;
+    -webkit-padding-start: 0px;
     max-height: 200px;
     background-color: #fff;
     position: absolute;
@@ -157,6 +200,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     }
 
     li {
+      padding-right: 15px;
+      &.selected {
+        background-color: #ccc;
+      }
+
       &:hover {
         background-color: #0073ff;
         color: #1f3a93;

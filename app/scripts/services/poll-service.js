@@ -10,7 +10,7 @@ angular.module('electionPollsApp')
 
 	this.addAveragePoll = function(polls) {
 		var averagePoll = {
-			source: "ממוצע 7 סקרים אחרונים",
+			source: "ממוצע",
 			results: this.averageResults(polls.slice(0,7))
 		}
 		polls.unshift(averagePoll);
