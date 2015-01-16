@@ -163,6 +163,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     stroke-dasharray: initial;
   }
 
+  .c3-grid line {
+    stroke: #c1c1c1;
+  }
+
   .c3-text {
     // fill: #fff !important;
     font-size: 1.8rem;
@@ -177,10 +181,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
   .c3-axis-x text {
     font-size: 14px;
-  }
-
-  #party-chart-container .c3-axis-x text {
-    font-size: 10px;
   }
 
 /*

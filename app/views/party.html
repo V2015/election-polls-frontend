@@ -1,5 +1,9 @@
 <h1 id="party-name-header" ng-style="{'color':'{{partyResults.color}}'}">{{partyResults.name}}</h1>
 
-<div id="party-chart-container" class="chart-container">
+<div id="party-chart-container" class="chart-container hidden-xs" >
 	<div party-bar-chart></div>
+</div>
+
+<div id="party-chart-container-mobile" class="chart-container visible-xs">
+	<div mobile-party-bar-chart></div>
 </div>

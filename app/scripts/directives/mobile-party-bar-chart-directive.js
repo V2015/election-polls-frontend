@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('electionPollsApp')
-  .directive('partyBarChart', ['d3Service',function(d3Service) {
+  .directive('mobilePartyBarChart', ['d3Service',function(d3Service) {
     return {
       restrict: 'EA',
       link: function(scope, element, attrs) {
@@ -10,7 +10,7 @@ angular.module('electionPollsApp')
             return Date.parse(r.poll.date);
           });
           var chart = c3.generate({
-              bindto: '#party-chart-container',
+              bindto: '#party-chart-container-mobile',
               data: {
                 columns: [
                   [scope.partyResults.name].concat(_.map(data,"mandates"))
@@ -25,6 +25,7 @@ angular.module('electionPollsApp')
                 }
               },
               axis: {
+                rotated: true,
                 x: {
                   type: 'category',
                   categories: _.map(data,function(r){
@@ -51,14 +52,13 @@ angular.module('electionPollsApp')
                 show: false
               },
               padding: {
-                left: 10,
-                right: 10,
-                top: 30,
+                left: 60,
+                right: 30,
+                top: 10,
                 bottom: 50
               }
           });
         });
-
       }
     };
   }]);
