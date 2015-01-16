@@ -5,24 +5,26 @@ angular.module('electionPollsApp')
 	// Runs during compile
 	return {
 		link: function($scope, iElm, iAttrs, controller) {
-			var showList = function() {
-				angular.element('#poll-list').removeClass('collapsed');
-				$document.bind('click', hideList);
+			var showList = function(event) {
+				if(isSelf(event)) {
+					angular.element('#poll-list').removeClass('collapsed');
+					$document.bind('click', hideList);
+				}
 			}
 
 			var hideList = function(event) {
-				var isChild = iElm.has(event.target).length > 0;
-        var isSelf = iElm[0] == event.target;
-        var isInside = isChild || isSelf;
-        var list = angular.element('#poll-list');
-        var collapsed = list.hasClass('collapsed');
-        if (!isInside) {
+        if (!isSelf(event)) {
           angular.element('#poll-list').addClass('collapsed');
           $document.unbind('click', hideList);
         }
 			}
 
-			angular.element('#switch-poll').on('click',showList);	
+			var isSelf = function(event) {
+				return iElm[0] == event.target || event.target.id == "selected-poll"
+			}
+
+			iElm.on('click',showList);
+			$document.bind('click', hideList);
 		}
 	}
 }]);

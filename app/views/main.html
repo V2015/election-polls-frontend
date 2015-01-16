@@ -1,19 +1,77 @@
-<div id="poll-select-container" class="row" poll-select>
-	<div class="col-md-8 col-sm-8 col-xs-8" id="poll-select">
-		<span id="selected-poll">{{selectedPoll.source}}</span>
+<div id="poll-select-container" class="row" >
+	<!-- Poll select -->
+	<div class="col-xs-8 ucontainer" id="poll-select" poll-select>
+		<div class="ucontainer-inner" id="selected-poll">
+			{{selectedPoll.source}}
+		</div>
+		<!-- Hidden poll list dropdown -->
 		<ul id="poll-list" class="collapsed">
-			<li ng-repeat="poll in pollData" ng-click="selectPoll(poll)">
+			<li ng-repeat="poll in pollData" 
+					ng-click="selectPoll(poll)"
+					ng-class="{'selected': poll == selectedPoll }">
 				{{poll.source}}
 			</li>
 		</ul>
 	</div>
-	<div class="col-md-4 col-sm-4 col-xs-4" id="switch-poll">
+	<!-- Facebook and pollView buttons -->
+	<div class="col-xs-4 ucontainer" id="buttons-container" class="ucontainer">
 		<div class="row">
-			<div class="col-md-8 col-sm-8 col-xs-8">
-				<span>החלפת סקר</span>
+			<!-- Facebook -->
+			<div class="col-xs-6 ucontainer" id="facebook-icon-container">
+				<div class="ucontainer-inner">
+					<svg version="1.1" id="facebook-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="25px" viewBox="0 0 15 25" enable-background="new 0 0 15 25" xml:space="preserve">
+						<path fill="#999999" d="M8.476,24H4.066V12h-2.94V7.865l2.94-0.002L4.062,5.428C4.062,2.053,4.959,0,8.855,0H12.1v4.136h-2.027
+							c-1.518,0-1.591,0.577-1.591,1.657l-0.006,2.07h3.646l-0.431,4.136L8.479,12L8.476,24z"/>
+					</svg>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-4">
-				<span class="glyphicon glyphicon-refresh"></span>
+			<!-- pollView toggle -->
+			<div class="col-xs-6 ucontainer" id="poll-view-toggle" ng-switch on="pollView" ng-class="{'pie': pollView == 'bar', 'bar': pollView == 'pie'}" ng-click="togglePollView()">
+				<div class="ucontainer-inner">
+					<svg ng-switch-when="pie" version="1.1" id="bar-view-icon" xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 283.7" enable-background="new 0 0 400 283.7" xml:space="preserve">
+						<g>
+							<g>
+								<g>
+									<g>
+										<rect x="51" y="2.7" fill="#FFFFFF" width="61" height="237"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<rect x="167" y="34.7" fill="#FFFFFF" width="61" height="205"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<rect x="283" y="122.7" fill="#FFFFFF" width="61" height="117"/>
+									</g>
+								</g>
+							</g>
+							<g>
+								<rect x="1" y="233.7" fill="#43D4BA" width="398" height="50"/>
+							</g>
+						</g>
+					</svg>
+					<div class="icon-label" ng-switch-when="pie">מפלגות</div>
+					<svg ng-switch-when="bar" version="1.1" id="pie-view-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+						<g>
+							<g>
+								<path fill="#010B60" d="M290.4,295c-23.4,22.1-54.9,35.8-89.7,35.8C128.7,330.8,70,272.1,70,200c0-71.8,58.1-130.3,129.9-130.7
+									c-0.3,0-0.9,0-0.9,0V1.7C90,2.6,2.3,91.2,2.3,200c0,109.4,89,198.4,198.4,198.4c49.9,0,95.6-18.6,130.5-49.1l-44.4-50.8
+									C288.1,297.4,289.2,296.1,290.4,295z"/>
+								<path fill="#FFFFFF" d="M199.1,1.6L199.1,1.6c0.3,0,0.5,0,0.8,0C199.7,1.7,199.4,1.6,199.1,1.6z"/>
+								<path fill="#FFFFFF" d="M331.2,349.3l0.1,0.1c8.7-7.6,16.5-15.8,23.6-24.7C347.7,333.6,339.8,341.8,331.2,349.3z"/>
+							</g>
+							<g>
+								<g>
+									<path fill="#FFFFFF" d="M331.3,349.4l-44.5-50.9c28.4-24.9,43.8-60.7,43.8-98.5c0-72.1-59.6-130.8-131.6-130.8V1.6
+										c112,0,199.3,89,199.3,198.4C398.3,257.3,374.4,311.7,331.3,349.4z"/>
+								</g>
+							</g>
+						</g>
+					</svg>
+					<div class="icon-label" ng-switch-when="bar">גושים</div>
+				</div>
 			</div>
 		</div>
 	</div>
