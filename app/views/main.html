@@ -19,11 +19,6 @@
 	</div>
 </div>
 
-<!-- <div>
-	<input type="radio" ng-model="pollView" value="bar">by Parties
-	<input type="radio" ng-model="pollView" value="pie">by Chunks 
-</div> -->
-
 <div ng-switch on="pollView" id="main-poll-view">
 	<div id="main-chart-container" 
 			 class="chart-container hidden-xs"
@@ -33,7 +28,7 @@
 
 	<div id="main-chart-container-mobile"
 			 class="chart-container visible-xs"
-			 ng-switch on="bar">
+			 ng-switch-when="bar">
 			 <div mobile-poll-bar-chart></div>
 	</div>
 

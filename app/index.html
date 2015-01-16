@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="electionPollsApp">
+  <body ng-app="electionPollsApp" ng-controller="AppController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-xs-6 pie footer-btn"
-                     ng-click="pollView='bar'">
+                     ng-click="pollView='pie'">
                     <div class="footer-btn-inner">
                         גושים
                     </div>
@@ -113,7 +113,7 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/d3/d3.js"></script>
-    <!-- <script src="bower_components/c3/c3.js"></script> -->
+    <!-- script src="bower_components/c3/c3.js"></script> -->
     <script src="scripts/modified-c3.js"></script>      
     <script src="scripts/c3overrides.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -130,6 +130,7 @@
         <script src="scripts/directives/party-bar-chart-directive.js"></script>
         <script src="scripts/directives/guess-pie-chart-directive.js"></script>
         <script src="scripts/directives/poll-select-directive.js"></script>
+        <script src="scripts/controllers/app-controller.js"></script>
         <script src="scripts/controllers/main-controller.js"></script>
         <script src="scripts/controllers/party-controller.js"></script>
         <script src="scripts/controllers/guess-controller.js"></script>

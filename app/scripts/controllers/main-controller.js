@@ -12,7 +12,7 @@ angular.module('electionPollsApp')
   	$scope.pollData = pollService.addAveragePoll(pollData);
   	$scope.selectedPoll = $scope.pollData[0];
   	$scope.partyData = partyData;
-  	$scope.pollView = "bar";
+  	
   	$scope.pieData = [];
 
   	$scope.$watch("selectedPoll",function(poll) {

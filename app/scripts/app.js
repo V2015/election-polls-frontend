@@ -41,19 +41,6 @@ angular
           }
         }
       })
-      .when('/guess', {
-        templateUrl: 'views/guess.html',
-        controller: 'GuessController',
-        resolve: {
-          partyData: function(Restangular){
-            return Restangular.all('parties.json').getList().then(function (data) {
-              return data;
-            }, function () {
-              return []; // failure
-            });
-          }
-        }
-      })
       .when('/contact', {
         templateUrl: 'views/contact.html'
       })
