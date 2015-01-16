@@ -93,6 +93,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     height: 68px;
     line-height: 68px;
     font-size: 24px;
+
+    & #poll-select {
+      & span {
+        white-space: nowrap;
+      }
+    }
   }
 
   // smaller screens
@@ -206,3 +212,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     }
   }
 
+
+// Pie Chart
+#pie-chart-container {
+  & .c3-legend-item {
+    & text {
+      text-anchor: end;
+    }
+
+    & circle {
+      shape-rendering: auto;
+    }
+  }
+}
