@@ -13,6 +13,13 @@ angular.module('electionPollsApp')
                 return [slice.chunk,slice.mandates]
               }),
               type : 'donut',
+              colors: {
+                "שמאל": '#1f3a93',
+                "ימין": '#96281b',
+                "מרכז": '#8e44ad',
+                "חרדים": '#d35400',
+                "ערבים": '#26a65b'
+              }
             },
             donut: {
               label: {
