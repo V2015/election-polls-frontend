@@ -55,10 +55,20 @@ angular.module('electionPollsApp')
                 right: 10,
                 top: 30,
                 bottom: 50
-              }
+              },
+              onresized: repositionLabels
           });
+          
+          setTimeout(function() {
+              repositionLabels();
+            },400);
         });
 
+        var repositionLabels = function() {
+          setTimeout(function(){
+            d3.selectAll('#party-chart-container .c3-text').attr('y',190);
+          },0) 
+        }
       }
     };
   }]);
