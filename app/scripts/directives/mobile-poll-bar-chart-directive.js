@@ -8,11 +8,13 @@ angular.module('electionPollsApp')
         d3Service.d3().then(function(d3) {
           scope.$watch('selectedPoll', function (poll) {
 
+
+
             var chart = c3.generate({
                 bindto: '#main-chart-container-mobile',
                 data: {
                   columns: [
-                    [poll.source].concat(_.map(poll.results,"mandates"))
+                    [poll.source].concat(_.map(poll.results, "mandates"))
                   ],
                   type: 'bar',
                   onclick: function (e) {
@@ -24,6 +26,7 @@ angular.module('electionPollsApp')
                       return scope.partyColor(poll.results[d.index].party_id);
                     }
                   },
+                  order: 'asc',
                   labels: true
                 },
                 bar: {
@@ -59,10 +62,10 @@ angular.module('electionPollsApp')
                 padding: {
                   left: 100, // enlarged for better display of categories
                   right: 30,
-                  top: 30
+                  top: 15
                 }
             });
-          }); 
+          });
         });
 
         function navigateToPartyPage(party_id) {

@@ -20,8 +20,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
   body {
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     direction: rtl;
+    overflow: hidden;
   }
 
   #main-view {
@@ -37,7 +38,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     height: calc(100% - 40px);
   }
 
-/* 
+/*
   Header
 */
   .navbar {
@@ -49,13 +50,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     background-color: #0073ff;
     border-color: #0073ff;
     * {
-      color: #fff !important;  
+      color: #fff !important;
     }
 
     .navbar-toggle {
       border-color: transparent;
       .icon-bar {
-        background-color: #fff; 
+        background-color: #fff;
       }
     }
 
@@ -100,6 +101,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   #poll-select-container {
     height: 55px;
     font-size: 2rem;
+    margin-right: -16px; // 1px more than what the .row class gives it
+    margin-left: -16px; //
   }
 
   #poll-select {
@@ -256,12 +259,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
       font-size: 12px;
     }
   }
-  
+
   @media only screen and (max-width : 768px){
 
     .container-fluid {
       height: 100%;
-    } 
+    }
 
     #main-chart-container-mobile {
       height: 100%;
