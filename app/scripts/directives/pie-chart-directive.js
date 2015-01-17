@@ -6,6 +6,12 @@ angular.module('electionPollsApp')
       restrict: 'EA',
       link: function(scope, element, attrs) {
         scope.$watch('pieData',function(data){
+
+          var names = {}
+          _.map(data, function(slice) {
+            names[slice.chunk] = slice.heb
+          });
+          
           var chart = c3.generate({
             bindto: '#pie-chart-container',
             data: {
@@ -14,12 +20,13 @@ angular.module('electionPollsApp')
               }),
               type : 'donut',
               colors: {
-                "שמאל": '#1f3a93',
-                "ימין": '#96281b',
-                "מרכז": '#8e44ad',
-                "חרדים": '#d35400',
-                "ערבים": '#26a65b'
-              }
+                "left": '#1f3a93',
+                "right": '#96281b',
+                "center": '#8e44ad',
+                "religious": '#d35400',
+                "arabs": '#26a65b'
+              },
+              names: names
             },
             donut: {
               label: {

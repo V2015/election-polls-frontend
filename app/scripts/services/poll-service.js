@@ -32,7 +32,7 @@ angular.module('electionPollsApp')
 		});
 		var len = polls.length;
 		return _.sortBy(_.map(averageHash,function(party) {
-			return { 
+			return {
 				party_id: party.party_id,
 				mandates: parseInt(party.mandates / len)
 			}
@@ -43,11 +43,11 @@ angular.module('electionPollsApp')
 
 	this.getPieData = function(poll) {
 		var pieData = [
-			{ chunk: "ימין", mandates: 0 },
-			{ chunk: "מרכז", mandates: 0 },
-			{ chunk: "חרדים", mandates: 0 },
-			{ chunk: "שמאל", mandates: 0 },
-			{ chunk: "ערבים", mandates: 0 }
+			{ chunk: "right", heb: "ימין", mandates: 0 },
+			{ chunk: "center", heb: "מרכז", mandates: 0 },
+			{ chunk: "religious", heb: "חרדים", mandates: 0 },
+			{ chunk: "left", heb: "שמאל", mandates: 0 },
+			{ chunk: "arabs", heb:"ערבים", mandates: 0 }
 		];
 
 		_.each(poll.results, function(r){

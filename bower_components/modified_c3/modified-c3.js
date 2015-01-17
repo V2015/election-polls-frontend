@@ -3186,7 +3186,7 @@
             .data(barOrLineData);
         $$.mainText.enter().append('text')
             .attr("class", classText)
-            .attr('text-anchor', function (d) { return config.axis_rotated ? (d.value < 0 ? 'end' : 'start') : 'middle'; })
+            .attr('text-anchor', function (d) { return config.axis_rotated ? (d.value < 0 ? 'start' : 'end') : 'middle'; }) // switched end & start
             .style("stroke", 'none')
             .style("fill", function (d) { return $$.color(d); })
             .style("fill-opacity", 0);
@@ -3809,6 +3809,8 @@
         var hasFocused = $$.legend.selectAll('.' + CLASS.legendItemFocused).size();
         var texts, rects, tiles, background;
 
+        var legendRadius = 5; // **yuvi: radius configuration
+
         options = options || {};
         withTransition = getOption(options, "withTransition", true);
         withTransitionForTransform = getOption(options, "withTransitionForTransform", true);
@@ -3897,9 +3899,9 @@
             yForLegend = function (id) { return maxHeight * steps[id]; };
         }
         xForLegendText = function (id, i) { return xForLegend(id, i) + 14; };
-        yForLegendText = function (id, i) { return yForLegend(id, i) + 9; };
+        yForLegendText = function (id, i) { return yForLegend(id, i) + 9 - legendRadius; }; // **yuvi: accounted for radius size
         xForLegendRect = function (id, i) { return xForLegend(id, i); };
-        yForLegendRect = function (id, i) { return yForLegend(id, i) - 5; };
+        yForLegendRect = function (id, i) { return yForLegend(id, i) - 5 + legendRadius; }; // **yuvi: accounted for radius size
 
         // Define g for legend area
         l = $$.legend.selectAll('.' + CLASS.legendItem)
@@ -3948,14 +3950,15 @@
             .style('fill-opacity', 0)
             .attr('x', $$.isLegendRight || $$.isLegendInset ? xForLegendRect : -200)
             .attr('y', $$.isLegendRight || $$.isLegendInset ? -200 : yForLegendRect);
-        l.append('rect')
+        l.append('circle') // **yuvi: changed to circle, also below x -> cx, y -> cy, etc.
             .attr("class", CLASS.legendItemTile)
             .style("pointer-events", "none")
             .style('fill', $$.color)
-            .attr('x', $$.isLegendRight || $$.isLegendInset ? xForLegendText : -200)
-            .attr('y', $$.isLegendRight || $$.isLegendInset ? -200 : yForLegend)
-            .attr('width', 10)
-            .attr('height', 10);
+            .attr('cx', $$.isLegendRight || $$.isLegendInset ? xForLegendText : -200)
+            .attr('cy', $$.isLegendRight || $$.isLegendInset ? -200 : yForLegend)
+            .attr('r', legendRadius)
+            .attr('width', legendRadius * 2) // **yuvi: replaced 10 with legendRadius**2, i.e. the circle width
+            .attr('height', legendRadius * 2);
 
         // Set background for inset legend
         background = $$.legend.select('.' + CLASS.legendBackground + ' rect');
@@ -3981,12 +3984,12 @@
             .attr('x', xForLegendRect)
             .attr('y', yForLegendRect);
 
-        tiles = $$.legend.selectAll('rect.' + CLASS.legendItemTile)
+        tiles = $$.legend.selectAll('circle.' + CLASS.legendItemTile) // **yuvi: replcaed "rect" with "circle"|
             .data(targetIds);
         (withTransition ? tiles.transition() : tiles)
             .style('fill', $$.color)
-            .attr('x', xForLegend)
-            .attr('y', yForLegend);
+            .attr('cx', xForLegend)
+            .attr('cy', yForLegend);
 
         if (background) {
             (withTransition ? background.transition() : background)
@@ -6708,7 +6711,7 @@
                         textEnter.attr("x", -tickLength);
                         lineUpdate.attr("x2", -innerTickSize).attr("y1", tickY).attr("y2", tickY);
                         textUpdate.attr("x", -tickLength).attr("y", tickOffset);
-                        text.style("text-anchor", "start"); // switched for hebrew support
+                        text.style("text-anchor", "start"); // **yuvi: switched for hebrew support
                         tspan.attr('x', -tickLength).attr("dy", tspanDy);
                         pathUpdate.attr("d", "M" + -outerTickSize + "," + range[0] + "H0V" + range[1] + "H" + -outerTickSize);
                         break;
@@ -6720,7 +6723,7 @@
                         textEnter.attr("x", tickLength);
                         lineUpdate.attr("x2", innerTickSize).attr("y2", 0);
                         textUpdate.attr("x", tickLength).attr("y", 0);
-                        text.style("text-anchor", "end"); // switched for hebrew support
+                        text.style("text-anchor", "end"); // **yuvi: switched for hebrew support
                         tspan.attr('x', tickLength).attr("dy", tspanDy);
                         pathUpdate.attr("d", "M" + outerTickSize + "," + range[0] + "H0V" + range[1] + "H" + outerTickSize);
                         break;
