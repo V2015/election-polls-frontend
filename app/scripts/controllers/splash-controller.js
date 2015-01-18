@@ -9,6 +9,7 @@
  */
 angular.module('electionPollsApp')
   .controller('SplashController', function ($scope,$location,information) {
+    $scope.isSplash = true;
     $scope.msg = information.msg;
     $scope.go = function(path, view) {
       $scope.pollView = view;
