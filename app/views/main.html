@@ -6,10 +6,10 @@
 		</div>
 		<!-- Hidden poll list dropdown -->
 		<ul id="poll-list" class="collapsed">
-			<li ng-repeat="poll in pollData" 
+			<li ng-repeat="poll in pollData"
 					ng-click="selectPoll(poll)"
 					ng-class="{'selected': poll == selectedPoll }">
-				{{poll.source}}
+				{{poll.source}} <small class="pull-left poll-date">{{poll.date|date:'d/M'}}</small>
 			</li>
 		</ul>
 	</div>
@@ -17,7 +17,7 @@
 	<div class="col-xs-4 ucontainer" id="buttons-container" class="ucontainer">
 		<div class="row">
 			<!-- Facebook -->
-			<div class="col-xs-6 ucontainer" 
+			<div class="col-xs-6 ucontainer"
 					 id="facebook-icon-container"
 					 ng-click="shareOnFacebook()">
 				<div class="ucontainer-inner">
@@ -80,7 +80,7 @@
 </div>
 
 <div ng-switch on="pollView" id="main-poll-view">
-	<div id="main-chart-container" 
+	<div id="main-chart-container"
 			 class="chart-container hidden-xs"
 			 ng-switch-when="bar">
 		<div poll-bar-chart></div>
@@ -93,14 +93,9 @@
 	</div>
 
 
-	<div id="pie-chart-container" 
-			 class="chart-container" 
+	<div id="pie-chart-container"
+			 class="chart-container"
 			 ng-switch-when="pie">
 		<div pie-chart></div>
 	</div>
 </div>
-
-
-
-
-

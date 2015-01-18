@@ -27,6 +27,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
   #main-view {
     height: calc(100% - 80px);
+    margin-top: 51px;
   }
 
   .chart-container {
@@ -193,7 +194,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     background-color: #fff;
     position: absolute;
     line-height: 30px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     right: 0;
     left: 0;
     border-left: 2px solid #000;
@@ -209,9 +211,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
         background-color: #ccc;
       }
 
+      & small.poll-date {
+          margin: 0 5px;
+          color: #505050;
+      }
+
       &:hover {
         background-color: #0073ff;
-        color: #1f3a93;
+        // color: #1f3a93;
+        color: white;
+
+        & small.poll-date {
+            color: #1f3a93;
+        }
       }
     }
   }

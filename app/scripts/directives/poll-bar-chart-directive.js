@@ -51,6 +51,9 @@ angular.module('electionPollsApp')
                 legend: {
                   show: false
                 },
+                tooltip: {
+                    show: false
+                },
                 padding: {
                   left: 20,
                   right: 20,
@@ -58,11 +61,11 @@ angular.module('electionPollsApp')
                 },
                 onresized: repositionLabels
             });
-            
+
             setTimeout(function() {
               repositionLabels();
             },400);
-          }); 
+          });
         });
 
         function navigateToPartyPage(party_id) {
@@ -74,7 +77,7 @@ angular.module('electionPollsApp')
         var repositionLabels = function() {
           setTimeout(function(){
             d3.selectAll('#main-chart-container .c3-text').attr('y',250);
-          },0) 
+          },0)
         }
       }
     };
