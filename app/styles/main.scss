@@ -45,6 +45,20 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   .navbar {
     margin-bottom: initial;
     border-radius: initial;
+
+    height: 51px;
+  }
+
+  .navbar-header {
+    & h3 {
+      margin: 11px;
+      text-indent: 15px;
+      display: inline-block;
+    }
+
+    & a.pull-left {
+      margin: 15px;
+    }
   }
 
   .navbar-default {
@@ -66,6 +80,54 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
       svg {
         height: 100%;
       }
+    }
+  }
+
+  .splash {
+
+    & h2 {
+      color: #0073ff;
+    }
+
+    & .msg {
+      color: #010b60;
+
+      & p {
+        font-size: 18px;
+      }
+    }
+
+
+    & #bottom-buttons {
+      display: block;
+
+        & .button {
+          height: 180px;
+
+          &.pie {
+            background-color: #43d4ba;
+          }
+
+          &.bar {
+            background-color: #010b60;
+            position: relative;
+          }
+
+          & svg {
+            height: 160px;
+            position: absolute;
+            top: 3%;
+          }
+
+          & h3 {
+            color: white;
+            margin: 11px;
+            text-align: center;
+            margin-top: 180px;
+          }
+
+
+        }
     }
   }
 
@@ -186,6 +248,18 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
 
+  #selected-poll {
+
+    &:after {
+      font-family: "Glyphicons Halflings";
+      content: "\e114";
+      position: absolute;
+      left: 15px;
+      color: #0073ff;
+    }
+  }
+
+
   #poll-list {
     list-style: none;
     display: block;
@@ -255,6 +329,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     font-size: 14px;
   }
 
+  .c3 line, .c3 path {
+    stroke: white;
+  }
+
 /*
   Party chart
 */
@@ -302,3 +380,4 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     }
   }
 }
+
