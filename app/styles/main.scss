@@ -240,7 +240,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
   .c3-text {
-    // fill: #fff !important;
+    fill: black !important;
     font-size: 1.8rem;
   }
 
@@ -283,6 +283,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
       max-height: initial !important;
     }
   }
+
+
+.c3-bars path {
+  shape-rendering: auto;
+}
 
 
 // Pie Chart

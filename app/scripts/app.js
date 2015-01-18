@@ -60,5 +60,6 @@ angular
       // For dev (if you have the election-polls-backend running)
       //RestangularProvider.setBaseUrl('http://localhost:3000');
       // For production
+      RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setBaseUrl('https://v15electionpolls.herokuapp.com');
   });
