@@ -16,6 +16,9 @@ angular
     'restangular',
     'd3'
   ])
+  .factory('superCache', ['$cacheFactory', function($cacheFactory) {
+    return $cacheFactory('super-cache');
+  }])
   .config(function ($routeProvider,RestangularProvider) {
     $routeProvider
       .when('/', {
@@ -24,10 +27,10 @@ angular
         resolve: {
           pollData: function(Restangular){
             return Restangular.all('polls.json').getList().then(function (data) {
-              return data;
-            }, function () {
-              return []; // failure
-            });
+                    return data;
+                  }, function () {
+                    return []; // failure
+                  });
           },
           partyData: function(Restangular){
             return Restangular.all('parties.json').getList().then(function (data) {
@@ -60,6 +63,6 @@ angular
       // For dev (if you have the election-polls-backend running)
       //RestangularProvider.setBaseUrl('http://localhost:3000');
       // For production
-      RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setBaseUrl('https://v15electionpolls.herokuapp.com');
+      RestangularProvider.setDefaultHttpFields({cache: true});
   });

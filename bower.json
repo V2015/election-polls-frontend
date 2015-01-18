@@ -14,6 +14,7 @@
     "angular-touch": "^1.3.0",
     "restangular": "latest",
     "c3": "latest",
+    "pace": "latest",
     "bootstrap": "latest",
     "bootstrap-rtl": "latest"
   },

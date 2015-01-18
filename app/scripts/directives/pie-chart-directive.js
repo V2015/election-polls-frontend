@@ -40,6 +40,9 @@ angular.module('electionPollsApp')
             },
             legend: {
               position: 'right'
+            },
+            padding: {
+              top: 30
             }
           });
         });
