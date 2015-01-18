@@ -9,5 +9,5 @@
  */
 angular.module('electionPollsApp')
   .controller('AppController', function ($scope) {
-  	
+  		$scope.pollView = null;
 	});

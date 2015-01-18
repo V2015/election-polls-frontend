@@ -99,11 +99,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
     & #bottom-buttons {
-      display: block;
-
+      position: absolute;
+      height: 25%;
+      width: 100%;
+      bottom: 0;
+      
         & .button {
-          height: 180px;
-
           &.pie {
             background-color: #43d4ba;
           }
@@ -112,18 +113,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
             background-color: #010b60;
             position: relative;
           }
-
+          
           & svg {
-            height: 160px;
-            position: absolute;
-            top: 3%;
+            margin: 10px 30px;
+            padding: 5% 0;
           }
 
           & h3 {
             color: white;
-            margin: 11px;
+            margin-top: 0;
+            margin-bottom: 10px; 
             text-align: center;
-            margin-top: 180px;
           }
 
 
@@ -336,8 +336,15 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /*
   Party chart
 */
+  #back-btn {
+    float: right;
+    margin: 15px 15px 0px -15px;
+  }
+
   #party-name-header {
     text-align: center;
+    padding-top: 20px;
+    margin-bottom: 0;
   }
 
   #party-chart-container .c3-text {
