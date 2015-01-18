@@ -19,6 +19,9 @@ angular
   .factory('superCache', ['$cacheFactory', function($cacheFactory) {
     return $cacheFactory('super-cache');
   }])
+  .factory("pollView",function(){
+    return { view: null };
+  })
   .config(function ($routeProvider,RestangularProvider) {
     $routeProvider
       .when('/', {

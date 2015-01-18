@@ -8,11 +8,14 @@
  * Controller of the electionPollsApp
  */
 angular.module('electionPollsApp')
-  .controller('MainController', function ($scope,pollData,partyData,pollService,$route) {
+  .controller('MainController', function ($scope,pollData,partyData,pollService,pollView) {
   	$scope.pollData = pollService.addAveragePoll(pollData);
   	$scope.selectedPoll = $scope.pollData[0];
-    if ($scope.pollView == undefined)
+    if (pollView == undefined) {
       $scope.pollView = "bar";
+    } else {
+      $scope.pollView = pollView.view;
+    }
   	$scope.partyData = partyData;
   	
   	$scope.pieData = [];
