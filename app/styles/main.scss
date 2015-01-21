@@ -54,7 +54,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     & h3 {
       margin: 11px;
       text-indent: 15px;
-      display: inline-block;
+      white-space: nowrap;
     }
 
     & a.pull-left {
