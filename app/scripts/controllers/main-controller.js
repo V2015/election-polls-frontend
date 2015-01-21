@@ -55,7 +55,7 @@ angular.module('electionPollsApp')
     $scope.shareOnFacebook = function() {
       FB.ui({
         method: 'share',
-        href: window.location.href,
+        href: "http://v15.org.il",
       },function(response) {});
     }
 
