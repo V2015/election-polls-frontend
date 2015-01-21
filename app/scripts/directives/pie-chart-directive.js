@@ -39,10 +39,10 @@ angular.module('electionPollsApp')
               show: false
             },
             legend: {
-              position: 'right'
+              position: 'bottom'
             },
             padding: {
-              top: 30
+              top: 0
             }
           });
         });
