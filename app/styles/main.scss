@@ -260,6 +260,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     .ucontainer {
       cursor: pointer;
     }
+
+    img {
+      height: 55px !important;
+      padding: 5px;
+    }
   }
 
   #poll-view-toggle {
@@ -271,6 +276,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
       line-height: 0.8rem;
     }
     background-color: #70B9F6;
+
+    
 
   }
 

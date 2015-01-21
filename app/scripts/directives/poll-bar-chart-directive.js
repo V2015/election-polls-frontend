@@ -57,7 +57,7 @@ angular.module('electionPollsApp')
                 padding: {
                   left: 20,
                   right: 20,
-                  top: 30
+                  top: 10
                 },
                 onresized: repositionLabels
             });
