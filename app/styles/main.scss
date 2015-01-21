@@ -259,11 +259,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     .ucontainer {
       cursor: pointer;
+      padding-right: 5px;
+      padding-left: 5px;
     }
 
     img {
-      height: 55px !important;
-      padding: 5px;
+      height: 25%;
     }
   }
 
