@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.v15.derech" version="0.9.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>הדרך לניצחון</name>
+    <description>
+        יישום הסקרים של ״ניצחון 2015״ מרכז בשבילכם את כל הסקרים מכל כלי התקשורת, כדי שתישארו מעודכנים כל הדרך אל הניצחון! #v15
+    </description>
+    <author email="win@v15.org.il" href="http://v15.org.il">
+        V15
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <platform name="android">
+        <splash src="www/assets/splash.png"/>
+    </platform>
+
+
+    <icon src="www/assets/icon-android.png" platform="android" />
+
+    <platform name="ios">
+        <!-- images are determined by width and height. The following are supported -->
+        <splash src="www/assets/splash.png" width="320" height="480" />
+
+    </platform>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3500" />
+</widget>
+
+
+
