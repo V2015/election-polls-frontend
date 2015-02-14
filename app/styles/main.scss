@@ -70,10 +70,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
   .navbar-header {
+    width: 100%;
     & h3 {
+      text-indent: 15px;
+      white-space: nowrap;
       margin: 13px 5px 0 0;
       font-weight: bold;
-      display: inline-block;
     }
 
     & a.pull-left {
@@ -257,6 +259,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     .ucontainer {
       cursor: pointer;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    img {
+      height: 25%;
     }
   }
 
@@ -269,6 +277,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
       line-height: 0.8rem;
     }
     background-color: #70B9F6;
+
+    
 
   }
 

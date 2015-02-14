@@ -11,7 +11,7 @@ angular.module('electionPollsApp')
   .controller('MainController', function ($scope,pollData,partyData,pollService,pollView) {
   	$scope.pollData = pollService.addAveragePoll(pollData);
   	$scope.selectedPoll = $scope.pollData[0];
-    if (pollView == undefined) {
+    if (pollView.view == undefined) {
       $scope.pollView = "bar";
     } else {
       $scope.pollView = pollView.view;
